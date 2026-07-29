@@ -26,10 +26,10 @@ public class DespesaController {
         return "despesas/lista";
     }
 
-    @GetMapping("/nova")
-    public String nova(Model model) {
+    @GetMapping("/nova") // ✅ CORRIGIDO
+    public String novaDespesa(Model model) {
         model.addAttribute("despesa", new Despesa());
-        model.addAttribute("categorias", categoriaRepo.findAll());
+        model.addAttribute("categorias", categoriaRepo.findAll()); // 🔥 IMPORTANTE
         return "despesas/form";
     }
 
@@ -48,7 +48,7 @@ public class DespesaController {
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {
-        model.addAttribute("despesa", despesaRepo.findById(id).orElseThrow());
+        model.addAttribute("despesas", despesaRepo.findById(id).orElseThrow());
         model.addAttribute("categorias", categoriaRepo.findAll());
         return "despesas/form";
     }

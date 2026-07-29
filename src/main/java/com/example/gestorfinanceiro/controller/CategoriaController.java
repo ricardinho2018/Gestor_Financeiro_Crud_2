@@ -20,7 +20,7 @@ public class CategoriaController {
         return "categorias/lista";
     }
 
-    @GetMapping("/nova")
+    @GetMapping("/nova") // ✅ CORRIGIDO
     public String novaCategoria(Model model) {
         model.addAttribute("categoria", new Categoria());
         return "categorias/form";

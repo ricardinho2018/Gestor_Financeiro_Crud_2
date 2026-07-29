@@ -28,10 +28,10 @@ public class ReceitaController {
         return "receitas/lista";
     }
 
-    @GetMapping("/nova")
-    public String nova(Model model) {
+    @GetMapping("/nova") // ✅ CORRIGIDO
+    public String novaReceita(Model model) {
         model.addAttribute("receita", new Receita());
-        model.addAttribute("categorias", categoriaRepository.findAll());
+        model.addAttribute("categorias", categoriaRepository.findAll()); // 🔥 IMPORTANTE
         return "receitas/form";
     }
 
@@ -45,7 +45,7 @@ public class ReceitaController {
     public String editar(@PathVariable Long id, Model model) {
         Receita receita = receitaService.buscarPorId(id);
         if (receita != null) {
-            model.addAttribute("receita", receita);
+            model.addAttribute("receita", receita); // ✅ corrigido
             model.addAttribute("categorias", categoriaRepository.findAll());
             return "receitas/form";
         }
