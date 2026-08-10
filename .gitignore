@@ -1,4 +1,15 @@
+
 target/
 .idea/
 *.log
-*.class
+
+# Base de dados H2
+/data/
+*.mv.db
+
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+
