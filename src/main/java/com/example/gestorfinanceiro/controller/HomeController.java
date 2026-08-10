@@ -1,7 +1,7 @@
 package com.example.gestorfinanceiro.controller;
 
-import com.example.gestorfinanceiro.repository.ReceitaRepository;
 import com.example.gestorfinanceiro.repository.DespesaRepository;
+import com.example.gestorfinanceiro.repository.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +18,7 @@ public class HomeController {
 
     @GetMapping({"/", "/index"})
     public String index(Model model) {
+
         double totalReceitas = receitaRepo.findAll()
                 .stream()
                 .mapToDouble(r -> r.getValor())
@@ -30,7 +31,15 @@ public class HomeController {
 
         double saldo = totalReceitas - totalDespesas;
 
-        model.addAttribute("saldo", String.format("%.2f", saldo));
+        model.addAttribute("totalReceitas",
+                String.format("%.2f", totalReceitas));
+
+        model.addAttribute("totalDespesas",
+                String.format("%.2f", totalDespesas));
+
+        model.addAttribute("saldo",
+                String.format("%.2f", saldo));
+
         return "index";
     }
 }

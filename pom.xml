@@ -100,12 +100,10 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-<<<<<<< HEAD
-
+        
         <!-- Lombok -->
-=======
->>>>>>> d1b2432 (fix: ignorar base de dados e ficheiros locais)
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
